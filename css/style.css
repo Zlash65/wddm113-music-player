@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(90deg, rgb(180, 167, 255) 25%, rgb(255, 200, 200) 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Comfortaa", Arial, Helvetica, sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+.music-player-container {
+  background-color: rgb(60, 60, 60);
+  box-shadow: 0 20px 20px 0 rgba(50, 50, 50, 0.6);
+  border-radius: 20px;
+  display: flex;
+  position: relative;
+  padding: 20px 20px;
+  margin: 100px 0;
+  z-index: 999;
+}
+
+.music-details {
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  background-color: rgba(150, 150, 150, 0.5);
+  border-radius: 15px 15px 0 0;
+  padding: 10px 10px 20px 150px;
+  width: calc(100% - 40px);
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+}
+
+.music-details h4 {
+  margin: 0;
+}
+
+.progress-bar-container {
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  height: 5px;
+}
+
+.progress-bar {
+  transition: width 0.1s linear;
+  background-color: #558859;
+  border-radius: 10px;
+  width: 0%;
+  height: 100%;
+}
+
+.duration {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.image-container {
+  position: relative;
+  width: 100px;
+}
+
+.image-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 5s linear infinite;
+
+  animation-play-state: paused;
+}
+
+.music-player-container.play .image-container img {
+  animation-play-state: running;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn {
+  background-color: rgb(60, 60, 60);
+  color: #95bcc9;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+  border: 0;
+}
+
+.action-btn.action-btn-big {
+  color: #95bcc9;
+  font-size: 30px;
+  transition: 0.4s;
+}
+
+.action-btn:hover, .action-btn.action-btn-big:hover {
+  color: #44a9c2;
+}
+
+.music-player-container.play .music-details {
+  transform: translateY(-100%);
+  opacity: 1;
+}
